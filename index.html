@@ -39,7 +39,7 @@
         }
 
         header {
-            margin-bottom: 60px;
+            margin-bottom: 30px;
             background: rgba(255,255,255,0.8);
             padding: 30px;
             border-radius: 16px;
@@ -64,7 +64,71 @@
             display: block;
         }
 
-        /* === FLEX ROW LAYOUT === */
+        /* === DROPDOWN STYLING === */
+        details {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            margin-bottom: 50px;
+            overflow: hidden;
+            border: 1px solid #eee;
+            text-align: left;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        summary {
+            padding: 20px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            color: var(--text-dark);
+        }
+
+        summary:hover { color: var(--robert-red); }
+
+        summary::after { content: "▼"; font-size: 0.7rem; transition: 0.3s; }
+        details[open] summary::after { transform: rotate(180deg); }
+
+        .details-content { padding: 10px 30px 30px 30px; border-top: 1px solid #f0f0f0; }
+
+        .summary-text { line-height: 1.7; color: var(--text-light); font-size: 1rem; }
+
+        /* Metrics inside dropdown */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .metric-card {
+            background: var(--bg-color);
+            padding: 12px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+
+        .metric-value { display: block; font-size: 1.3rem; font-weight: 800; color: var(--robert-red); }
+        .metric-label { font-size: 0.65rem; text-transform: uppercase; font-weight: 700; color: var(--text-light); }
+
+        /* === TEAM GRID === */
+        .team-title {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
         .members-grid {
             display: flex;
             flex-direction: row;
@@ -128,10 +192,7 @@
             margin: 0;
         }
 
-        /* === CONTACT SECTION === */
-        .contact-section {
-            margin-top: 20px;
-        }
+        .contact-section { margin-top: 20px; }
 
         .contact-btn {
             background-color: var(--text-dark);
@@ -156,6 +217,7 @@
             margin-top: 80px;
             font-size: 0.85rem;
             color: var(--text-light);
+            padding-bottom: 40px;
         }
     </style>
 </head>
@@ -165,8 +227,25 @@
         <header>
             <span class="partner-info">Robert GmbH Industry Project</span>
             <h1>AI-Based Quality Control</h1>
-            <p style="color: var(--text-light); margin: 10px 0 0 0;">University Project Team & Contribution Summaries</p>
+            <p style="color: var(--text-light); margin: 10px 0 0 0;">Collaboration with Exact Colours</p>
         </header>
+
+        <details>
+            <summary>View Project Technical Overview</summary>
+            <div class="details-content">
+                <p class="summary-text">
+                    The AI Production Control project at <strong>Robert GmbH (Exact Colours)</strong> focuses on modernizing quality control within the chemical printing industry through advanced software automation. By replacing manual inspection, which is highly prone to human error and fatigue, the project implements a high-precision deep learning system using <strong>PyTorch and TensorFlow</strong> to monitor coated paper sheets in real-time.
+                </p>
+                <div class="metrics-grid">
+                    <div class="metric-card"><span class="metric-value">≥95%</span><span class="metric-label">Target Accuracy</span></div>
+                    <div class="metric-card"><span class="metric-value">+20%</span><span class="metric-label">Efficiency Gain</span></div>
+                    <div class="metric-card"><span class="metric-value">-90%</span><span class="metric-label">Manual Workload</span></div>
+                    <div class="metric-card"><span class="metric-value">NVIDIA</span><span class="metric-label">Jetson Edge</span></div>
+                </div>
+            </div>
+        </details>
+
+        <div class="team-title">University Project Team</div>
 
         <div class="members-grid">
             <div class="member-card">
@@ -174,7 +253,7 @@
                 <a href="https://www.linkedin.com/in/leonardo-giuseppe-ziche/" target="_blank" class="member-link">
                     Leonardo Ziche <svg class="li-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <p class="contribution-summary">Oversees project milestones and coordinates communication between the team and Robert GmbH. Responsible for the UI/UX, timeline adherence, and stakeholder management.</p>
+                <p class="contribution-summary">Oversees project milestones and coordinates communication between the team and stakeholders. Responsible for UI/UX, timeline adherence, and management.</p>
             </div>
 
             <div class="member-card">
@@ -182,7 +261,7 @@
                 <a href="https://www.linkedin.com/in/georgi-goranov-874870326/" target="_blank" class="member-link">
                     Georgi Goranov <svg class="li-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <p class="contribution-summary">Facilitates Agile methodologies and sprint planning. Ensures smooth internal workflows and maintains documentation of methodology, system evaluation, and final reporting.</p>
+                <p class="contribution-summary">Facilitates Agile methodologies and sprint planning. Maintains documentation of methodology, system evaluation, and final reporting.</p>
             </div>
 
             <div class="member-card">
@@ -190,7 +269,7 @@
                 <a href="https://www.linkedin.com/in/ivan-galabov/" target="_blank" class="member-link">
                     Ivan Galabov <svg class="li-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <p class="contribution-summary">Directs high-level technical decisions regarding ML frameworks (PyTorch/TensorFlow) and hardware integration with industrial cameras and AI Edge devices.</p>
+                <p class="contribution-summary">Directs high-level technical decisions regarding ML frameworks and hardware integration with industrial cameras and NVIDIA edge devices.</p>
             </div>
 
             <div class="member-card">
@@ -206,7 +285,7 @@
                 <a href="https://www.linkedin.com/in/jazzfel/" target="_blank" class="member-link">
                     Jazz Fels <svg class="li-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                 </a>
-                <p class="contribution-summary">Specializes in data collection, software modularity, and scalability, ensuring the system can adapt to new product variants and industrial hardware.</p>
+                <p class="contribution-summary">Specializes in software modularity and the continuous feedback loop, ensuring the system can adapt to new product variants.</p>
             </div>
         </div>
 
@@ -214,11 +293,11 @@
             <a href="mailto:lgziche@gmail.com" class="contact-btn">
                 <span>Contact Team</span>
             </a>
-            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 15px;">Project Lead for Stakeholder Communication</p>
+            <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 15px;">Project Manager • lgziche@gmail.com</p>
         </div>
 
         <footer>
-            <p>&copy; 2026 AI Quality Control Project - Collaboration with Robert GmbH</p>
+            <p>&copy; 2026 AI Production Control Project - Collaboration with Robert GmbH</p>
         </footer>
     </div>
 
